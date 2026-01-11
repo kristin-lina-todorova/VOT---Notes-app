@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Notes App Frontend</title>
+</head>
+<body>
+    <h1>Notes App Frontend</h1>
+    <button id="loadBackend">Load Backend Message</button>
+    <p id="backendMessage"></p>
+
+    <script>
+        document.getElementById('loadBackend').addEventListener('click', () => {
+            fetch('http://notes-backend:5001/message')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('backendMessage').innerHTML = data;
+                })
+                .catch(err => {
+                    document.getElementById('backendMessage').innerHTML = 'Error: ' + err;
+                });
+        });
+    </script>
+</body>
+</html>
